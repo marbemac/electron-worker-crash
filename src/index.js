@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+const { app, BrowserWindow } = require('electron');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -10,6 +10,7 @@ const createWindow = () => {
 		width: 800,
 		height: 600,
 		webPreferences: {
+      nodeIntegration: true,
 			nodeIntegrationInWorker: process.env.NODE_INTEGRATION_IN_WORKER ? true : false
 		},
 	})

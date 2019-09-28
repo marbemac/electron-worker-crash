@@ -1,68 +1,59 @@
 {
-	"name": "my-new-project",
-	"productName": "my-new-project",
-	"version": "1.0.0",
-	"description": "My Electron application description",
-	"main": "src/index.js",
-	"scripts": {
-		"start": "electron src/index.js",
-		"start.crash": "NODE_INTEGRATION_IN_WORKER=true electron src/index.js",
-		"forge-start": "electron-forge start",
-		"package": "electron-forge package",
-		"make": "electron-forge make",
-		"publish": "electron-forge publish",
-		"lint": "eslint src --color"
-	},
-	"keywords": [],
-	"author": "trusktr",
-	"license": "MIT",
-	"config": {
-		"forge": {
-			"make_targets": {
-				"win32": [
-					"squirrel"
-				],
-				"darwin": [
-					"zip"
-				],
-				"linux": [
-					"deb",
-					"rpm"
-				]
-			},
-			"electronPackagerConfig": {
-				"packageManager": "yarn"
-			},
-			"electronWinstallerConfig": {
-				"name": "my_new_project"
-			},
-			"electronInstallerDebian": {},
-			"electronInstallerRedhat": {},
-			"github_repository": {
-				"owner": "",
-				"name": ""
-			},
-			"windowsStoreConfig": {
-				"packageName": "",
-				"name": "mynewproject"
-			}
-		}
-	},
-	"dependencies": {
-		"electron-compile": "^6.4.4",
-		"electron-squirrel-startup": "^1.0.0",
-		"lodash": "^4.17.15"
-	},
-	"devDependencies": {
-		"babel-plugin-transform-async-to-generator": "^6.24.1",
-		"babel-preset-env": "^1.7.0",
-		"babel-preset-react": "^6.24.1",
-		"electron-forge": "^5.2.4",
-		"electron-prebuilt-compile": "4.0.0",
-		"eslint": "^6",
-		"eslint-config-airbnb": "^18",
-		"eslint-plugin-import": "^2",
-		"eslint-plugin-jsx-a11y": "^6",
-		"eslint-plugin-react": "^7"
-	}
+  "name": "electron-web-worker-crash",
+  "productName": "electron-web-worker-crash",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "start.crash": "NODE_INTEGRATION_IN_WORKER=true electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "Marc MacLeod",
+    "email": "marc@stoplight.io"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "electron_web_worker_crash"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "6.0.0-beta.45",
+    "@electron-forge/maker-deb": "6.0.0-beta.45",
+    "@electron-forge/maker-rpm": "6.0.0-beta.45",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.45",
+    "@electron-forge/maker-zip": "6.0.0-beta.45",
+    "electron": "6.0.10"
+  }
 }
